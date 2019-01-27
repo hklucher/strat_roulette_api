@@ -2,6 +2,10 @@ defmodule StratRouletteApiWeb.StratView do
   use StratRouletteApiWeb, :view
 
   def render("random.json", %{strat: strat}) do
-    %{strat: strat}
+    %{
+      id: strat.id,
+      name: strat.name,
+      description: strat.description
+    }
   end
 end
