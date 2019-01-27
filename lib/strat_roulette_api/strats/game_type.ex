@@ -6,6 +6,8 @@ defmodule StratRouletteApi.Strats.GameType do
   schema "game_types" do
     field :name, :string
 
+    many_to_many :strats, Strat, join_through: "game_type_strats"
+
     timestamps()
   end
 
