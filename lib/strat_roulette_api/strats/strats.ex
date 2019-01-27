@@ -101,4 +101,100 @@ defmodule StratRouletteApi.Strats do
   def change_game_type(%GameType{} = game_type) do
     GameType.changeset(game_type, %{})
   end
+
+  alias StratRouletteApi.Strats.Strat
+
+  @doc """
+  Returns the list of strats.
+
+  ## Examples
+
+      iex> list_strats()
+      [%Strat{}, ...]
+
+  """
+  def list_strats do
+    Repo.all(Strat)
+  end
+
+  @doc """
+  Gets a single strat.
+
+  Raises `Ecto.NoResultsError` if the Strat does not exist.
+
+  ## Examples
+
+      iex> get_strat!(123)
+      %Strat{}
+
+      iex> get_strat!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_strat!(id), do: Repo.get!(Strat, id)
+
+  @doc """
+  Creates a strat.
+
+  ## Examples
+
+      iex> create_strat(%{field: value})
+      {:ok, %Strat{}}
+
+      iex> create_strat(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_strat(attrs \\ %{}) do
+    %Strat{}
+    |> Strat.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a strat.
+
+  ## Examples
+
+      iex> update_strat(strat, %{field: new_value})
+      {:ok, %Strat{}}
+
+      iex> update_strat(strat, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_strat(%Strat{} = strat, attrs) do
+    strat
+    |> Strat.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Strat.
+
+  ## Examples
+
+      iex> delete_strat(strat)
+      {:ok, %Strat{}}
+
+      iex> delete_strat(strat)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_strat(%Strat{} = strat) do
+    Repo.delete(strat)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking strat changes.
+
+  ## Examples
+
+      iex> change_strat(strat)
+      %Ecto.Changeset{source: %Strat{}}
+
+  """
+  def change_strat(%Strat{} = strat) do
+    Strat.changeset(strat, %{})
+  end
 end
