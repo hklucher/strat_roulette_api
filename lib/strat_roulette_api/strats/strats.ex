@@ -197,4 +197,13 @@ defmodule StratRouletteApi.Strats do
   def change_strat(%Strat{} = strat) do
     Strat.changeset(strat, %{})
   end
+
+  def random_strat(team) do
+    strats = Repo.all(from s in Strat, where: s.team == ^team)
+
+    case strats do
+      [] -> nil
+      _ -> Enum.random(strats)
+    end
+  end
 end

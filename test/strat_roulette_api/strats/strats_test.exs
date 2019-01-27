@@ -123,5 +123,25 @@ defmodule StratRouletteApi.StratsTest do
       strat = strat_fixture()
       assert %Ecto.Changeset{} = Strats.change_strat(strat)
     end
+
+    test "random_strat/1 returns a strat" do
+      strat_fixture(%{name: "Attack", description: "Attack", team: "attack"})
+      strat = Strats.random_strat("attack")
+      assert strat.id != nil
+    end
+
+    test "random_strat/1 returns appropriate team" do
+      attack_strat = strat_fixture(%{name: "Attack", description: "Attack", team: "attack"})
+      strat_fixture(%{name: "Defense", description: "Defense", team: "defense"})
+      strat = Strats.random_strat("attack")
+
+      assert strat.id == attack_strat.id
+    end
+
+    test "random_strat/1 returns nil when no results found" do
+      strat = Strats.random_strat("defense")
+
+      assert strat == nil
+    end
   end
 end
