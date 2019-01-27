@@ -13,10 +13,34 @@
 alias StratRouletteApi.Strats.GameType
 alias StratRouletteApi.Repo
 
-game_types = ["Bomb", "Hostage", "Secure Area"]
+# game_types = ["Bomb", "Hostage", "Secure Area"]
 
-Enum.each(game_types, fn name -> 
-  changeset = GameType.changeset(%GameType{}, %{name: name})
+# Enum.each(game_types, fn name -> 
+#   changeset = GameType.changeset(%GameType{}, %{name: name})
 
-  Repo.insert!(changeset)
-end)
+#   Repo.insert!(changeset)
+# end)
+
+NimbleCSV.define(StratParser, separator: ",", escape: "\"")
+
+# File.open!("attack_strats.csv")
+
+"./priv/repo/attack_strats.csv"
+|> Path.expand
+|> File.stream!
+|> StratParser.parse_stream
+|> Stream.map(fn i -> IO.inspect(i) end)
+|> Stream.run
+
+# ""
+# File.stream!("attack_strats.csv") |> CSV.decode |> Stream.map(fn i -> IO.inspect(i) end) |> Stream.run
+# IO.inspect thing
+
+
+# "./priv/repo/attack_strats.csv"
+# |> Path.expand()
+# |> File.stream!
+# |> StratParser.parse_stream
+# |> Stream.map(fn [name, description, game_type] ->
+#   IO.inspect "#{name} #{description} #{game_type}"
+# end)
