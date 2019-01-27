@@ -43,7 +43,7 @@ defmodule StratRouletteApi.Mixfile do
       {:plug_cowboy, "~> 1.0"},
       {:ecto_enum, "~> 1.0"},
       {:nimble_csv, "~> 0.5.0"},
-      {:ex_machina, "~> 2.2", only: :test}
+      {:ex_machina, "~> 2.2"}
     ]
   end
 

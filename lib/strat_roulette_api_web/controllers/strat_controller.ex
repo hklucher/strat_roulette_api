@@ -21,7 +21,7 @@ defmodule StratRouletteApiWeb.StratController do
       _ ->
         conn
         |> put_status(:not_found)
-        |> json("not_found.json")
+        |> render("not_found.json")
     end
   end
 end
