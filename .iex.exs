@@ -1,0 +1,2 @@
+alias StratRouletteApi.Repo
+alias StratRouletteApi.Strats.GameType
