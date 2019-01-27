@@ -1,7 +1,7 @@
 defmodule StratRouletteApi.Strats.GameType do
   use Ecto.Schema
   import Ecto.Changeset
-
+  alias StratRouletteApi.Strats.Strat
 
   schema "game_types" do
     field :name, :string

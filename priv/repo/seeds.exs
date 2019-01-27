@@ -9,3 +9,14 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias StratRouletteApi.Strats.GameType
+alias StratRouletteApi.Repo
+
+game_types = ["Bomb", "Hostage", "Secure Area"]
+
+Enum.each(game_types, fn name -> 
+  changeset = GameType.changeset(%GameType{}, %{name: name})
+
+  Repo.insert!(changeset)
+end)
