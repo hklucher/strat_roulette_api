@@ -23,5 +23,7 @@ defmodule StratRouletteApiWeb.Router do
     pipe_through :api
 
     get "/strats/random", StratController, :random
+
+    resources "/strats", StratController, only: [:index] 
   end
 end
