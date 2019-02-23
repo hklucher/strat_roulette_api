@@ -19,8 +19,11 @@ defmodule StratRouletteApiWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", StratRouletteApiWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", StratRouletteApiWeb do
+    pipe_through :api
+
+    get "/strats/random", StratController, :random
+
+    resources "/strats", StratController, only: [:index] 
+  end
 end

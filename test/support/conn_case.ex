@@ -20,6 +20,8 @@ defmodule StratRouletteApiWeb.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
       import StratRouletteApiWeb.Router.Helpers
+      import StratRouletteApi.Factory
+
 
       # The default endpoint for testing
       @endpoint StratRouletteApiWeb.Endpoint
