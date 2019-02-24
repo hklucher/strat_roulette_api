@@ -1,8 +1,10 @@
 defmodule StratRouletteApiWeb.StratController do
   use StratRouletteApiWeb, :controller
+  alias StratRouletteApi.Strats
 
   def index(conn, _params) do
-    render(conn, "strats.json", [])
+    strats = Strats.list_strats()
+    render conn, "index.json", strats: strats
   end
 
   # GET /api/strats/random?team=attack
